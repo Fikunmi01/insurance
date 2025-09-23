@@ -1,18 +1,18 @@
-<div class="bg-[#08535D]/20 py-14 px-[100px]">
+<div class="bg-[#08535D]/20 py-14 px-3 lg:px-[100px]">
   <div class="flex flex-col gap-4">
     <h1 class="text-4xl font-lexend text-[#02333C] font-semibold text-center">
       What My Clients Say?
     </h1>
-    <p class="font-lexend text-center text-[#02333C] font-light text-2xl">
+    <p class="font-lexend text-center text-[#02333C] font-light text-lg lg:text-2xl">
       Don't Just take my word for it. Here's what families and business owners
       throughout New Jersey are saying about their experience working with me.
     </p>
   </div>
 
-  <div class="grid grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4">
     <div
       *ngFor="let item of testimonialArray"
-      class="my-10 shadow-[#00000040] rounded-2xl bg-white shadow-md p-10"
+      class="my-3 lg:my-10 shadow-[#00000040] rounded-2xl bg-white shadow-md p-10"
     >
       <div class="flex flex-col gap-7 border-b border-[#02333C] pb-5">
         <div class="flex flex-col items-start gap-2.5">
@@ -39,7 +39,7 @@
 
   <div
     #statsSection
-    class="shadow-[#00000040] shadow-md bg-white rounded-2xl grid grid-cols-4 py-8 px-20"
+    class="shadow-[#00000040] shadow-md bg-white rounded-2xl grid grid-cols-1 lg:grid-cols-4 py-8 px-20"
   >
     <span class="flex flex-col justify-center items-center gap-2.5">
       <p class="text-[#99BCC4] text-5xl font-semibold font-lexend">{{ familiesProtected }}+</p>

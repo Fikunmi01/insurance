@@ -1,8 +1,8 @@
-<div class="py-14 leading-loose px-[100px] font-lexend">
-  <div class="flex justify-between items-start w-full">
-    <div class="flex flex-col gap-4 w-2/3">
+<div class="py-14 leading-loose px-3 lg:px-[100px] font-lexend">
+  <div class="flex lg:flex-row flex-col-reverse justify-between items-start w-full">
+    <div class="flex flex-col gap-4 lg:w-2/3">
       <h2 class="text-5xl">Meet Your Trusted Financial Partner</h2>
-      <p class="font-lexend font-light text-lg w-3/4">
+      <p class="font-lexend font-light text-base lg:text-lg lg:w-3/4">
         I'm Worziyan Mavolo, from Piscataway, New Jersey. As a Life Insurance
         Agent and Financial Advisor with New York Life, I'm dedicated to helping
         individuals, families, and business owners build a secure financial
@@ -17,38 +17,34 @@
         175 years.
       </p>
     </div>
-    <div class="relative w-1/3">
-  <img src="assets/author-img.png" alt="" />
-  <div
-    class="flex gap-2 font-lexend bg-[#99BCC44D] border border-[#99BCC4] py-2 absolute bottom-0 w-2/3 left-1/2 transform -translate-x-1/2 mb-6 items-center backdrop-blur-[25px] shadow-lg rounded-lg p-2"
-  >
-    <img src="assets/headset-icon.png" alt="" />
-    <div class="flex flex-col text-base text-white">
-      <p class="">Licensed Profesional</p>
-      <p>New York Life Agent</p>
+    <div class="relative lg:w-1/3">
+      <img src="assets/author-img.png" alt="" />
+      <div
+        class="flex gap-2 font-lexend bg-[#99BCC44D] border border-[#99BCC4] py-2 absolute bottom-0 w-2/3 left-1/2 transform -translate-x-1/2 mb-6 items-center backdrop-blur-[25px] shadow-lg rounded-lg p-2">
+        <img src="assets/headset-icon.png" alt="" />
+        <div class="flex flex-col text-base text-white">
+          <p class="">Licensed Profesional</p>
+          <p>New York Life Agent</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
   </div>
 
   <div
-    class="flex justify-center items-center text-center font-lexend flex-col bg-[#99BCC4]/40 my-4 py-5 rounded-md px-7"
-  >
+    class="flex justify-center items-center text-center font-lexend flex-col bg-[#99BCC4]/40 my-4 py-5 rounded-md px-7">
     <h3 class="text-[#02333C] font-semibold text-2xl">
       Meet Your Trusted Financial Partner
     </h3>
-    <p class="font-light text-xl font">
+    <p class="font-light text-base lg:text-xl font">
       I help individuals, families, and business owners create personalized
       strategies for financial security, retirement planning, and legacy
       protection with the trusted strength of New York Life
     </p>
 
     <div class="my-8 w-full mx-auto text-center">
-      <div class="grid place-items-center gap-4 grid-cols-4 mx-auto">
-        <div
-          *ngFor="let item of aboutUsArray"
-          class="bg-white py-6 px-4 rounded-xl flex h-56 w-full max-w-xs flex-col shadow-[#00000040] shadow-lg items-center text-center"
-        >
+      <div class="grid place-items-center gap-4 grid-cols-1 lg:grid-cols-4 mx-auto">
+        <div *ngFor="let item of aboutUsArray"
+          class="bg-white py-6 px-4 rounded-xl flex h-56 w-full max-w-xs flex-col shadow-[#00000040] shadow-lg items-center text-center">
           <div class="flex items-center justify-center h-16 mb-3">
             <img src="{{ item.icon }}" class="object-contain" alt="" />
           </div>
@@ -70,7 +66,7 @@
   </div>
 </div>
 
-<div class="mt-4 py-10 bg-[#99BCC4]/10 px-[100px] flex flex-col gap-10">
+<div class="mt-4 py-10 bg-[#99BCC4]/10 px-3 lg:px-[100px] flex flex-col gap-10">
   <div class="flex flex-col gap-4">
     <h1 class="text-4xl font-lexend text-[#02333C] font-semibold text-center">
       Comprehensive Financial Solution
@@ -87,11 +83,9 @@
       Financial Planning & Security
     </h3>
 
-    <div class="grid grid-cols-3 place-items-center mb-10">
-      <div
-        *ngFor="let item of financialServiceArray"
-        class="flex gap-2 font-lexend bg-[#99BCC4]/40 h-32 bottom-0 w-fit items-center m-6 backdrop-blur-[25px] shadow-lg rounded-2xl p-3"
-      >
+    <div class="grid grid-cols-1 lg:grid-cols-3 place-items-center mb-4 lg:mb-10">
+      <div *ngFor="let item of financialServiceArray"
+        class="flex gap-2 font-lexend bg-[#99BCC4]/40 h-32 bottom-0 w-fit items-center m-6 backdrop-blur-[25px] shadow-lg rounded-2xl p-3">
         <img src="{{ item.icon }}" alt="" />
         <div class="flex flex-col text-base text-white">
           <h2 class="text-[#02333C] text-xl font-medium font">
@@ -108,11 +102,9 @@
       Protection Services
     </h3>
 
-    <div class="grid grid-cols-3 place-items-center mb-10">
-      <div
-        *ngFor="let item of protectionServiceArray"
-        class="flex gap-2 font-lexend bg-[#08535D]/40 h-32 bottom-0 w-fit items-center m-6 backdrop-blur-[25px] shadow-lg rounded-2xl p-3"
-      >
+    <div class="grid grid-cols-1 lg:grid-cols-3 place-items-center mb-4 lg:mb-10">
+      <div *ngFor="let item of protectionServiceArray"
+        class="flex gap-2 font-lexend bg-[#08535D]/40 h-32 bottom-0 w-fit items-center m-6 backdrop-blur-[25px] shadow-lg rounded-2xl p-3">
         <img src="{{ item.icon }}" alt="" />
         <div class="flex flex-col text-base text-white">
           <h2 class="text-[#02333C] text-xl font-medium font">
@@ -129,11 +121,9 @@
       Wealth Accumulation
     </h3>
 
-    <div class="grid grid-cols-3 place-items-center mb-10">
-      <div
-        *ngFor="let item of wealthServiceArray"
-        class="flex gap-2 font-lexend bg-[#02333C]/40 h-32 bottom-0 w-fit items-center m-6 backdrop-blur-[25px] shadow-lg rounded-2xl p-3"
-      >
+    <div class="grid grid-cols-1 lg:grid-cols-3 place-items-center mb-4 lg:mb-10">
+      <div *ngFor="let item of wealthServiceArray"
+        class="flex gap-2 font-lexend bg-[#02333C]/40 h-32 bottom-0 w-fit items-center m-6 backdrop-blur-[25px] shadow-lg rounded-2xl p-3">
         <img src="{{ item.icon }}" alt="" />
         <div class="flex flex-col text-base text-white">
           <h2 class="text-[#02333C] text-xl font-medium font">
@@ -148,25 +138,22 @@
   </div>
 
   <div
-    class="mx-[100px] px-20 py-10 text-center flex flex-col gap-2.5 rounded-2xl bg-[#99BCC4]/90 w-2/3 mx-auto"
-    id="cta"
-  >
+    class="lg:mx-[100px] mx-4 px-4 lg:px-20 py-10 text-center flex flex-col gap-2.5 rounded-2xl bg-[#99BCC4]/90 lg:w-2/3 mx-auto"
+    id="cta">
     <h3 class="font-lexend text-2xl font-semibold text-[#02333C]">
       Ready to Secure Your Financial Future?
     </h3>
-    <p class="text-xl font-lexend text-[#02333C] font-light">
+    <p class="lg:text-xl text-base font-lexend text-[#02333C] font-light">
       Let's discuss your unique needs and create a personalized strategy that
       protects what matters most to you.
     </p>
     <div class="flex gap-4 justify-center">
       <button
-        class="bg-[#02333C]/90 text-[#99BCC4] font-lexend font-normal text-xl p-3 rounded-lg"
-      >
+        class="bg-[#02333C]/90 text-[#99BCC4] font-lexend font-normal text-base lg:text-xl p-2 lg:p-3 rounded-lg">
         Schedule Consultation
       </button>
       <button
-        class="border border-[#02333C80] bg-[#02333C33] p-3 rounded-lg font-normal text-xl text-[#02333C]"
-      >
+        class="bg-[#02333C]/90 text-[#99BCC4] font-lexend font-normal text-base lg:text-xl p-2 lg:p-3 rounded-lg">
         Get Your Quote
       </button>
     </div>
