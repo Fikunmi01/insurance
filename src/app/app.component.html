@@ -1,7 +1,120 @@
-<div>
+<div [class.blur-sm]="privacyOpen" [class.pointer-events-none]="privacyOpen">
   <app-hero></app-hero>
   <app-about-us></app-about-us>
   <app-testimonial></app-testimonial>
   <app-contact id="contact-form"></app-contact>
-  <app-footer></app-footer>
+  <app-footer (privacyToggled)="onPrivacyToggled()"></app-footer>
+</div>
+
+<!-- Privacy Popup Modal-->
+<div
+  class="fixed inset-0 text-white flex items-center justify-center z-50"
+  *ngIf="privacyOpen"
+>
+  <div
+    class="bg-[#99BCC4] rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden relative flex flex-col"
+  >
+    <!-- Modal Header -->
+    <div class="relative flex items-center py-8 lg:py-10 flex-shrink-0">
+      <h2
+        class="absolute lg:left-1/2 transform lg:-translate-x-1/2 left-6 text-2xl lg:text-4xl font-semibold text-white font-lexend"
+      >
+        Privacy Policy
+      </h2>
+    </div>
+
+    <div class="relative mx-6 border-white border-b flex-shrink-0">
+      <p class="font-lexend text-sm lg:text-lg font-normal">
+        Please review our privacy policy before continuing to use our website.
+      </p>
+    </div>
+
+    <!-- Modal Content - Scrollable Area -->
+    <div class="font-lexend px-6 py-3 text-white overflow-y-auto flex-grow">
+      <div>
+        <h1 class="font-semibold text-xl">Information We Collect</h1>
+        <p class="mb-2 font-normal text-sm">
+          We collect information you provide directly to us, such as when you
+          create an account, subscribe to our newsletter, or contact us for
+          support. This may include your name, email address, and any other
+          information you choose to provide.
+        </p>
+      </div>
+
+      <div>
+        <h1 class="font-semibold text-xl">How We Use Information</h1>
+        <p class="mb-2 font-normal text-sm">
+          We use the information we collect to provide, maintain, and improve
+          our services, process transactions, send you technical notices and
+          support messages, and communicate with you about products, services,
+          and promotional offers.
+        </p>
+      </div>
+      
+      <div>
+        <h1 class="font-semibold text-xl">Information Sharing</h1>
+        <p class="mb-2 font-normal text-sm">
+          We do not sell, trade, or otherwise transfer your personal information
+          to third parties without your consent, except as described in this
+          policy. We may share your information with trusted service providers
+          who assist us in operating our website and conducting our business.
+        </p>
+      </div>
+
+      <div>
+        <h1 class="font-semibold text-xl">Cookies & Tracking</h1>
+        <p class="mb-2 font-normal text-sm">
+          We use cookies and similar tracking technologies to collect and track
+          information about your use of our website. You can control cookies
+          through your browser settings, though disabling cookies may affect
+          your experience on our site.
+        </p>
+      </div>
+
+      <div>
+        <h1 class="font-semibold text-xl">Data Security</h1>
+        <p class="mb-2 font-normal text-sm">
+          We implement appropriate security measures to protect your personal
+          information against unauthorized access, alteration, disclosure, or
+          destruction. However, no method of transmission over the internet is
+          100% secure.
+        </p>
+      </div>
+
+      <div>
+        <h1 class="font-semibold text-xl">Your Rights</h1>
+        <p class="mb-2 font-normal text-sm">
+          You have the right to access, update, or delete your personal
+          information. You may also opt out of certain communications from us.
+          To exercise these rights, please contact us using the information
+          provided below
+        </p>
+      </div>
+      
+      <div>
+        <h1 class="font-semibold text-xl">Changes To The Policy</h1>
+        <p class="mb-2 font-normal text-sm">
+          We may update this privacy policy from time to time. We will notify
+          you of any changes by posting the new policy on this page and updating
+          the "Last Updated" date.
+        </p>
+      </div>
+
+      <div class="mb-4">
+        <p class="font-lexend text-sm font-normal">
+          Last updated: September 24, 2025
+        </p>
+      </div>
+    </div>
+
+    <!-- Modal Footer - Fixed at bottom -->
+    <div class="flex justify-end border-t border-white mx-6 py-3 flex-shrink-0 bg-[#99BCC4]">
+      <button
+        class="px-4 py-2 bg-[#02333C] text-[#99BCC4] rounded cursor-pointer font-lexend"
+        (click)="closePrivacy()"
+      >
+        Close
+      </button>
+    </div>
+  </div>
 </div>

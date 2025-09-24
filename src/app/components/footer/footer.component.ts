@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -11,4 +11,10 @@ import { Component } from '@angular/core';
 export class FooterComponent {
   date = new Date();
   year = this.date.getFullYear();
+  
+  @Output() privacyToggled = new EventEmitter<void>();
+  
+  onPrivacyClick() {
+    this.privacyToggled.emit();
+  }
 }
