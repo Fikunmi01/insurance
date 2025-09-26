@@ -23,8 +23,8 @@ import { FooterComponent } from './components/footer/footer.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'landing-page';
-  privacyOpen: boolean = true;
+  title = 'worziyanmavolo';
+  privacyOpen: boolean = false;
 
   constructor(@Inject(DOCUMENT) private document: Document) {}
 

@@ -12,6 +12,7 @@
       consultation and discover how we can help protect and grow your wealth.
     </p>
   </div>
+
   <div
     class="flex gap-10 my-9 lg:flex-row flex-col font-lexend px-3 lg:px-[100px]"
   >
@@ -26,108 +27,203 @@
           Fill out the form below and I'll contact you within 24 hours.
         </p>
       </div>
-      <div class="flex flex-col text-white gap-3.5">
+
+      <!-- Contact Form -->
+      <form
+        [formGroup]="contactForm"
+        (ngSubmit)="onSubmit()"
+        class="flex flex-col text-white gap-3.5"
+      >
+        <!-- Success/Error Messages -->
+        <div
+          *ngIf="submitStatus"
+          class="mt-4 p-3 rounded-md"
+          [class.bg-green-600]="submitStatus === 'success'"
+          [class.bg-red-600]="submitStatus === 'error'"
+        >
+          <p class="text-white text-sm">{{ submitMessage }}</p>
+        </div>
+
+        <!-- Name Fields -->
         <div class="text-base flex flex-col gap-2.5">
-          <label for="Name" class="text-lg text-white"
-            >Name<sup class="text-red-400">*</sup></label
-          >
+          <label class="text-lg text-white">
+            Name<sup class="text-red-400">*</sup>
+          </label>
           <div class="grid grid-cols-2 gap-4">
-            <input
-              type="text"
-              class="bg-[#ffffff]/20 border outline-none border-[#02333C66] rounded-md p-2.5"
-              placeholder="First"
-              name=""
-              id=""
-            />
-            <input
-              type="text"
-              placeholder="Last"
-              name=""
-              class="bg-[#ffffff]/20 outline-none border border-[#02333C66] rounded-md p-2.5"
-              id=""
-            />
-          </div>
-        </div>
-        <div class="text-base flex flex-col gap-2.5">
-          <label for="Email" class="text-lg text-white"
-            >Email<sup class="text-red-400">*</sup></label
-          >
-          <div class="w-full grid grid-cols-1 gap-4">
-            <input
-              type="text"
-              class="bg-[#ffffff]/20 outline-none border border-[#02333C66] rounded-md p-2.5"
-              placeholder="johndoe@email.com"
-              name=""
-              id=""
-            />
-          </div>
-        </div>
-        <div class="text-base flex flex-col gap-2.5">
-          <label for="text" class="text-lg text-white"
-            >Phone<sup class="text-red-400">*</sup></label
-          >
-          <div class="w-full grid grid-cols-1 gap-4">
-            <input
-              type="text"
-              class="bg-[#ffffff]/20 outline-none border border-[#02333C66] rounded-md p-2.5"
-              placeholder="+1 (947)- 221- 0416"
-              name=""
-              id=""
-            />
+            <!-- First Name -->
+            <div class="flex flex-col">
+              <input
+                type="text"
+                formControlName="firstName"
+                class="bg-[#ffffff]/20 border outline-none rounded-md p-2.5 transition-colors"
+                [class.border-red-500]="hasError('firstName')"
+                [class.border-[#02333C66]]="!hasError('firstName')"
+                placeholder="First"
+                (input)="onFieldChange()"
+              />
+              <span
+                *ngIf="hasError('firstName')"
+                class="text-red-400 text-xs mt-1"
+              >
+                {{ getErrorMessage("firstName") }}
+              </span>
+            </div>
+
+            <!-- Last Name -->
+            <div class="flex flex-col">
+              <input
+                type="text"
+                formControlName="lastName"
+                class="bg-[#ffffff]/20 outline-none border rounded-md p-2.5 transition-colors"
+                [class.border-red-500]="hasError('lastName')"
+                [class.border-[#02333C66]]="!hasError('lastName')"
+                placeholder="Last"
+                (input)="onFieldChange()"
+              />
+              <span
+                *ngIf="hasError('lastName')"
+                class="text-red-400 text-xs mt-1"
+              >
+                {{ getErrorMessage("lastName") }}
+              </span>
+            </div>
           </div>
         </div>
 
+        <!-- Email Field -->
         <div class="text-base flex flex-col gap-2.5">
-          <label for="text" class="text-lg text-white"
-            >Personal Interest<sup class="text-red-400">*</sup></label
-          >
+          <label class="text-lg text-white">
+            Email<sup class="text-red-400">*</sup>
+          </label>
+          <div class="w-full grid grid-cols-1 gap-4">
+            <input
+              type="email"
+              formControlName="email"
+              class="bg-[#ffffff]/20 outline-none border rounded-md p-2.5 transition-colors"
+              [class.border-red-500]="hasError('email')"
+              [class.border-[#02333C66]]="!hasError('email')"
+              placeholder="johndoe@email.com"
+              (input)="onFieldChange()"
+            />
+            <span *ngIf="hasError('email')" class="text-red-400 text-xs">
+              {{ getErrorMessage("email") }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Phone Field -->
+        <div class="text-base flex flex-col gap-2.5">
+          <label class="text-lg text-white">
+            Phone<sup class="text-red-400">*</sup>
+          </label>
+          <div class="w-full grid grid-cols-1 gap-4">
+            <input
+              type="tel"
+              formControlName="phone"
+              class="bg-[#ffffff]/20 outline-none border rounded-md p-2.5 transition-colors"
+              [class.border-red-500]="hasError('phone')"
+              [class.border-[#02333C66]]="!hasError('phone')"
+              placeholder="+1 (947) 221-0416"
+              (input)="onPhoneInput($event); onFieldChange()"
+            />
+            <span *ngIf="hasError('phone')" class="text-red-400 text-xs">
+              {{ getErrorMessage("phone") }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Personal Interest Field -->
+        <div class="text-base flex flex-col gap-2.5">
+          <label class="text-lg text-white">
+            Personal Interest<sup class="text-red-400">*</sup>
+          </label>
           <div class="w-full grid grid-cols-1 gap-4">
             <input
               type="text"
-              class="bg-[#ffffff]/20 outline-none border border-[#02333C66] rounded-md p-2.5"
-              placeholder="State your interest"
-              name=""
-              id=""
+              formControlName="personalInterest"
+              class="bg-[#ffffff]/20 outline-none border rounded-md p-2.5 transition-colors"
+              [class.border-red-500]="hasError('personalInterest')"
+              [class.border-[#02333C66]]="!hasError('personalInterest')"
+              placeholder="State your interest (e.g., Life Insurance, Retirement Planning)"
+              (input)="onFieldChange()"
             />
+            <span
+              *ngIf="hasError('personalInterest')"
+              class="text-red-400 text-xs"
+            >
+              {{ getErrorMessage("personalInterest") }}
+            </span>
           </div>
         </div>
+
+        <!-- Message Field -->
         <div class="text-base flex flex-col gap-2.5">
-          <label for="text" class="text-lg text-white"
-            >Comment or Message</label
-          >
+          <label class="text-lg text-white"> Comment or Message </label>
           <div class="w-full grid grid-cols-1 gap-4">
             <textarea
-              type="text"
-              class="bg-[#ffffff]/20 border outline-none border-[#02333C66] rounded-md p-2.5"
-              name=""
-              id=""
+              formControlName="message"
+              class="bg-[#ffffff]/20 border outline-none border-[#02333C66] rounded-md p-2.5 h-24 resize-vertical"
+              placeholder="Additional details about your financial goals..."
+              (input)="onFieldChange()"
             ></textarea>
           </div>
         </div>
 
+        <!-- Submit Button -->
         <div class="border-b border-white pb-7">
           <button
-            class="bg-[#99BCC4] w-full p-3 rounded-md font-lexend text-white font-semibold text-xl"
+            type="submit"
+            class="bg-[#99BCC4] w-full p-3 rounded-md font-lexend text-white font-semibold text-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#8AACB4]"
+            [disabled]="isSubmitting"
           >
-            Schedule a Consultation
+            <span *ngIf="!isSubmitting">Schedule a Consultation</span>
+            <span
+              *ngIf="isSubmitting"
+              class="flex items-center justify-center gap-2"
+            >
+              <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Sending...
+            </span>
           </button>
         </div>
 
+        <!-- Contact Information -->
         <div class="pt-1 text-white">
           <p class="font-lexend font-normal text-[#99BCC4] text-xl">
-            Facing any problem to get a Consultaion!
+            Facing any problem to get a Consultation!
           </p>
           <div class="flex items-center gap-2.5">
-            <img src="assets/call-icon.png" alt="" />
+            <img src="assets/call-icon.png" alt="Phone Icon" />
             <div class="flex items-center">
               <p class="font-lexend font-bold text-xl">
-                Call: <span class="text-[#99BCC4] underline">+19087201060</span>
+                Call:
+                <a
+                  href="tel:+19087201060"
+                  class="text-[#99BCC4] underline hover:text-white transition-colors"
+                  >+19087201060</a
+                >
               </p>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
+
+    <!-- Right Side Content -->
     <div class="flex-col gap-12 lg:w-1/2 flex">
       <div class="bg-[#99BCC4] px-7 rounded-2xl py-10">
         <h1 class="text-4xl font-lexend font-semibold text-[#08535D] mb-7">
@@ -135,25 +231,29 @@
         </h1>
         <div class="flex gap-4 flex-col items-start">
           <div class="flex items-center gap-2.5">
-            <img src="assets/call-twoicon.png" alt="" />
+            <img src="assets/call-twoicon.png" alt="Phone Icon" />
             <div class="flex items-center">
               <p class="font-lexend text-[#02333C] font-normal text-xl">
                 Phone:
-                <span class="text-[#02333C] font-light text-base"
-                  >(908) 720-1060</span
+                <a
+                  href="tel:+19087201060"
+                  class="text-[#02333C] font-light text-base hover:underline"
+                  >(908) 720-1060</a
                 >
               </p>
             </div>
           </div>
           <div class="flex items-center gap-2.5">
             <div class="w-6 h-6">
-              <img src="assets/envelope-1.png" alt="" />
+              <img src="assets/envelope-1.png" alt="Email Icon" />
             </div>
             <div class="flex items-center">
               <p class="font-lexend text-[#02333C] font-normal text-xl">
                 Email:
-                <span class="text-[#02333C] font-light text-base"
-                  >wmavolo&#64;newyorklife.com</span
+                <a
+                  href="mailto:wmavolo@ftnewyorklife.com"
+                  class="text-[#02333C] font-light text-base hover:underline break-all"
+                  >wmavolo&#64;ftnewyorklife.com</a
                 >
               </p>
             </div>
@@ -161,7 +261,7 @@
 
           <div class="flex items-center gap-2.5">
             <div class="w-6 h-6">
-              <img src="assets/clock-icon.png" alt="" />
+              <img src="assets/clock-icon.png" alt="Clock Icon" />
             </div>
             <div class="flex items-center">
               <p class="font-lexend text-[#02333C] font-normal text-xl">
@@ -175,7 +275,7 @@
 
           <div class="flex items-center gap-2.5">
             <div class="w-6 h-6">
-              <img src="assets/pin-icon.png" alt="" />
+              <img src="assets/pin-icon.png" alt="Location Icon" />
             </div>
             <div class="flex items-center">
               <p class="font-lexend text-[#02333C] font-normal text-xl">
@@ -191,7 +291,7 @@
 
       <div class="bg-[#08535D] font-lexend rounded-2xl px-7 py-10">
         <h1 class="text-3xl font-normal text-[#99BCC4] mb-7">
-          Why Choose Newyork Life Insurance
+          Why Choose New York Life Insurance
         </h1>
         <div
           class="px-7 text-[#99BCC4] text-xl pb-11 border-b border-[#99BCC4]"
